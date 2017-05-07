@@ -1,0 +1,72 @@
+<div >
+<section>
+  <div class="page-header" id="home-bg">
+    <div class="row">
+      <div class="col-md-8">
+        <h1 style="margin-left: 20px; color: #9ea0eb; font-size: 40px; font-weight: bolder;" >BẢNG XẾP HẠNG</h1>
+      </div>
+      <div class="col-md-4" style="margin-top: 2em; margin-left: -10px">
+        <input class="form-control col-md-4" type="text" ng-model="vm.search" placeholder="Search" ng-change="vm.figureOutItemsToDisplay()" />
+      </div>
+    </div>
+  </div>
+  <!-- end Heading -->
+
+  <div class="list-group col-md-2"></div>
+  <div class="list-group col-md-8">
+    <h2>Toàn sever</h2>
+    <a ng-repeat="user in vm.pagedItems" class="list-group-item">
+    <div ng-if="user.username == vm.users[0].username" id="top1" >
+      <h3 class="list-group-item-heading" ng-bind="user.displayName" style="font-weight: bolder; font-size: 35px;"></h3>
+      <h4 class="list-group-item-text pull-right" style="margin-top: -30px; font-size: 30px;" ng-bind="user.score + user.score1 + user.score2"></h4>
+      <p class="list-group-item-text" ng-bind="user.username"></p>
+    </div>
+
+    <div ng-if="user.username == vm.users[1].username" id="top2" >
+      <h3 class="list-group-item-heading" ng-bind="user.displayName" style="font-weight: bolder; font-size: 28px;"></h3>
+      <h4 class="list-group-item-text pull-right" style="margin-top: -25px; font-size: 25px;" ng-bind="user.score + user.score1 + user.score2"></h4>
+      <p class="list-group-item-text" ng-bind="user.username"></p>
+    </div>
+
+    <div ng-if="user.username == vm.users[2].username" id="top3" >
+      <h3 class="list-group-item-heading" ng-bind="user.displayName" style="font-weight: bolder; font-size: 25px;"></h3>
+      <h4 class="list-group-item-text pull-right" style="margin-top: -22px; font-size: 22px;" ng-bind="user.score + user.score1 + user.score2"></h4>
+      <p class="list-group-item-text" ng-bind="user.username"></p>
+    </div>
+
+    <span ng-if="user.username != vm.users[0].username && user.username != vm.users[1].username && user.username != vm.users[2].username" >
+      <h3 class="list-group-item-heading" ng-bind="user.displayName"></h3>
+      <h4 class="list-group-item-text pull-right" style="margin-top: -10px;" ng-bind="user.score + user.score1 + user.score2"></h4>
+      <p class="list-group-item-text" ng-bind="user.username"></p>
+    </span>
+    </a>
+    <uib-pagination boundary-links="true" max-size="8" items-per-page="vm.itemsPerPage" total-items="vm.filterLength" ng-model="vm.currentPage" ng-change="vm.pageChanged()"></uib-pagination>
+  </div>
+  <div class="list-group col-md-2"></div>
+
+  <!-- end total -->
+
+  <div class="list-group col-md-5">
+    <h2><a ng-href="/rspgame">Rock-Scissor-Paper</a></h2>
+    <a ng-repeat="usera in vm.users0" id="first_game" class="list-group-item">
+      <h3 class="list-group-item-heading" ng-bind="usera.displayName"></h3>
+      <h4 class="list-group-item-text pull-right" ng-bind="usera.score" style="margin-top: -10px;"></h4>
+      <p class="list-group-item-text" ng-bind="usera.username"></p>
+    </a>
+  </div>
+
+  <div class="list-group col-md-2"></div>
+
+  <div class="list-group col-md-5">
+    <h2>More Space Please</h2>
+    <a ng-repeat="userx in vm.users1" id="second_game" class="list-group-item">
+      <h3 class="list-group-item-heading" ng-bind="userx.displayName"></h3>
+      <h4 class="list-group-item-text pull-right" ng-bind="userx.score1" style="margin-top: -10px;"></h4>
+      <p class="list-group-item-text" ng-bind="userx.username"></p>
+      <!-- <p class="list-group-item-text pull-right small" ng-bind="user.roles"></p> -->
+    </a>
+    
+  </div>
+</section>
+
+</div>
