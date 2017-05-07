@@ -1,0 +1,58 @@
+<section>
+  <div class="page-header">
+    <h1>
+      Room of the Rock Scissor Paper game
+      <a class="btn btn-primary pull-right" data-ui-sref="rspgame.create" style="font-size: 25px;">
+        <i class="glyphicon glyphicon-plus"></i>
+        Tạo Phòng
+      </a>
+    </h1>
+  </div>
+  <div class="list-group col-md-4">
+    <h2>Xếp hạng</h2>
+    <a ng-repeat="usera in vm.pagedItems" id="first_game" class="list-group-item">
+      <h3 class="list-group-item-heading" ng-bind="usera.displayName"></h3>
+      <h4 class="list-group-item-text pull-right" ng-bind="usera.score" style="margin-top: -10px;"></h4>
+      <p class="list-group-item-text" ng-bind="usera.username"></p>
+    </a>
+    <uib-pagination boundary-links="true" max-size="8" items-per-page="vm.itemsPerPage" total-items="vm.filterLength" ng-model="vm.currentPage" ng-change="vm.pageChanged()"></uib-pagination>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="list-group col-md-7">
+    <h2>Phòng chơi</h2>
+    <span ng-repeat="rspgame in vm.rspgames" class="list-group-item" style="margin-bottom: 10px; font-size: 18px;" >
+      <div ng-if="rspgame.user1.displayName == '' || rspgame.user2.displayName == ''" style="color: #FFFFFF;" >
+        <a ui-sref="rspgame.view({ rspgameId: rspgame._id })" >
+          <div style="width: 30%; float: left;">
+            Phòng: <span class="list-group-item-heading" ng-bind="rspgame.number"></span>
+            <p class="list-group-item-text" ng-bind="rspgame.des"></p>
+          </div>
+          <div style="width: 40%; float: left; color: #D5CA04">
+            <span ng-if="rspgame.user2.displayName == ''" ng-bind="rspgame.user1.displayName"></span>
+            <br/>
+            <span ng-if="rspgame.user1.displayName == ''" ng-bind="rspgame.user2.displayName"></span>
+          </div>
+          <div style="color: #31823c; font-size: 25px; padding-bottom: 10px;">
+            <i>Đang chờ</i>
+          </div>
+        </a>
+      </div>
+      <div ng-if="rspgame.user1.displayName != '' && rspgame.user2.displayName != ''" style="color: #FFFFFF;">
+        <a>
+          <div style="width: 30%; float: left;">
+            Phòng: <span class="list-group-item-heading" ng-bind="rspgame.number"></span>
+            <p class="list-group-item-text" ng-bind="rspgame.des"></p>
+          </div>
+          <div style="width: 40%; float: left; color: #95445c">
+            <span ng-bind="rspgame.user1.displayName"></span>
+            <br/>
+            <span ng-bind="rspgame.user2.displayName"></span>
+          </div>
+          <div style="color: #f9779b; font-size: 25px; padding-bottom: 10px;">
+            Đã đầy
+          </div>
+        </a>
+      </div>
+    </span>
+  </div>
+</section>

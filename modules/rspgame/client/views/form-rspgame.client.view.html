@@ -1,0 +1,25 @@
+<section>
+  <div class="page-header">
+    <h1>Tạo phòng mới</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.rspgameForm" class="form-horizontal" ng-submit="vm.save(vm.form.rspgameForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="number">Số phòng</label>
+          <input name="number" type="text" ng-model="vm.rspgame.number" id="number" class="form-control" placeholder="Nhập số yêu thích" required autofocus autocomplete="off">
+          <div ng-messages="vm.form.rspgameForm.number.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Yêu cầu số phòng hợp lệ.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="des"> Mô tả </label>
+          <textarea name="des" data-ng-model="vm.rspgame.des" id="des" class="form-control" cols="30" rows="10" placeholder="Chiến đấu nào / Chấp cả server /..."></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">Tạo phòng</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

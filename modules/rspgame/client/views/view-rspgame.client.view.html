@@ -1,0 +1,110 @@
+<style type="text/css">
+  .col-md-5, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-6{
+    display: inherit;
+    height: 100%;
+  }
+  .minheight{
+    min-height: 130px;
+  }
+  .playerchooseImage{
+    margin-left: 30%;
+    /*float: left;*/
+  }
+  .clear-fix{
+    overflow: auto;
+  }
+  .clear-both{
+    clear: both;
+  }
+</style>
+<section>
+  <div class="page-header clear-fix">
+    <div ng-bind="vm.rspgame.number" style="font-size: 40px; margin-left: 45%;"></div>
+    <a class="btn btn-primary" style="margin-top: -20px;" ng-click="vm.wait_room()">
+      <i class="glyphicon glyphicon-arrow-left pull-left"></i>&nbsp Sảnh chờ
+    </a>
+    <div style="font-size: 30px; font-weight: bolder;">
+    <span class="col-md-5">
+      <span ng-if="vm.rspgame.user1.displayName !==''">
+        <span class="col-md-4"></span>
+        <span ng-bind="vm.rspgame.user1.displayName" style="color: #18308b"></span><br/>
+        <span class="col-md-5"></span>
+        <span ng-bind="vm.rspgame.user1.score" style="color: #2648d2"></span><br/>
+        <span class="col-md-5"></span>
+        <span ng-bind="vm.result1" style="color: #2648d2"></span><br/>
+      </span>
+    </span>
+    <span class="col-md-2">
+      <a class="btn" style="margin-top: -20px; " ng-if="vm.rspgame.user2.displayName !=='' && vm.rspgame.user1.displayName !=='' && vm.buttonStart==='ready'" ng-click="vm.gameStart()">
+      <img src="/modules/rspgame/client/img/gobutton.png" style="max-width: 100%">
+      </a>
+      <span ng-if="vm.rspgame.user2.displayName !=='' && vm.rspgame.user1.displayName !=='' && vm.buttonStart==='playing'" ng-bind="vm.counter">
+      </span>
+    </span>
+    <span class="col-md-5">
+      <span ng-if="vm.rspgame.user2.displayName !==''">
+      <span class="col-md-4"></span>
+      <span ng-bind="vm.rspgame.user2.displayName" style="color: green"></span><br/>
+      <span class="col-md-5"></span>
+      <span ng-bind="vm.rspgame.user2.score" style="color: #48b834; float: left;"></span><br/>
+      <span class="col-md-5"></span>
+      <span ng-bind="vm.result2" style="color: #48b834"></span><br/>
+      </span>
+    </span>
+    </div>
+  </div>
+  <span class="clear-both"></span>
+  <div class="battle" ng-if="vm.authentication.user.displayName == vm.rspgame.user1.displayName">
+  <div class="col-md-5 minheight" >
+    <div ng-if="vm.choose1 == 0">
+        <img class="playerchooseImage" src="/modules/rspgame/client/img/{{vm.choose}}x.png">
+    </div>
+    <div ng-if="vm.choose1 != 0">
+        <img class="playerchooseImage" src="/modules/rspgame/client/img/{{vm.choose1}}x.png">
+    </div>
+    
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-5 minheight">
+    <div>
+        <img class="playerchooseImage" src="/modules/rspgame/client/img/{{vm.choose2}}x.png">
+    </div>
+  </div>
+  </div>
+
+  <div class="battle" ng-if="vm.authentication.user.displayName != vm.rspgame.user1.displayName">
+  <div class="col-md-5 minheight" >
+    <div>
+        <img class="playerchooseImage" src="/modules/rspgame/client/img/{{vm.choose1}}x.png">
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-5 minheight">
+    <div ng-if="vm.choose2 == 0">
+        <img class="playerchooseImage" src="/modules/rspgame/client/img/{{vm.choose}}x.png">
+    </div>
+    <div ng-if="vm.choose2 != 0">
+        <img class="playerchooseImage" src="/modules/rspgame/client/img/{{vm.choose2}}x.png">
+    </div>
+  </div>
+  </div>
+  <span class="clear-both"></span>
+  <hr width="80%">
+  <div class="chooseOne">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <h1>Chọn : &nbsp
+              <span ng-click="vm.chooseRock()"><img src="/modules/rspgame/client/img/rockbtn.png"></span>
+              <span ng-click="vm.chooseScissor()"><img src="/modules/rspgame/client/img/scissorbtn.png"></span>
+              <span ng-click="vm.choosePaper()"><img src="/modules/rspgame/client/img/paperbtn.png"></span>
+      </h1>
+    </div>
+    
+  </div>
+  <!-- <div ng-if="vm.choose1 != 0">
+    <img class="playerchooseImage" src="/modules/rspgame/client/img/{{vm.choose1}}x.png">
+  </div>
+  <div ng-if="vm.choose2 != 0">
+    <img class="playerchooseImage" src="/modules/rspgame/client/img/{{vm.choose2}}x.png">
+  </div> -->
+</section>
